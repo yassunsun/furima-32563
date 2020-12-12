@@ -4,18 +4,19 @@
 
 | Column         | Type   | Options     |
 | -------------- | ------ | ----------- |
-| email          | string | null: false |
-| password       | string | null: false |
+| email          | string | null: false, unique: true |
+| encrypted_password       | string | null: false |
 | nickname       | string | null: false |
-| name(kanji)    | string | null: false |
-| name(katakana) | string | null: false |
+| last_name_kanji    | string | null: false |
+| first_name_kanji    | string | null: false |
+| last_name_katakana | string | null: false |
+| first_name_katakana | string | null: false |
 | birthday       | date   | null: false |
 
 ### Association
 
 - has_many :items
 - has_many :buys
-- has_one  :address
 
 
 ## items テーブル
@@ -24,11 +25,11 @@
 | ------------- | ---------- | ------------------------------ |
 | title         | string     | null: false                    |
 | explanation   | text       | null: false                    |
-| category      | string     | null: false                    |
-| condition     | string     | null: false                    |
-| delivery_fee  | integer    | null: false                    |
-| delivery_area | string     | null: false                    |
-| delivery_day  | date       | null: false                    |
+| category_id      | integer     | null: false                    |
+| condition_id     | integer     | null: false                    |
+| fee_id  | integer    | null: false                    |
+| area_id | integer     | null: false                    |
+| day_id  | integer       | null: false                    |
 | price         | integer    | null: false                    |
 | user          | references | null: false, foreign_key: true |
 
@@ -36,16 +37,12 @@
 
 - belongs_to :user
 - has_one    :buy
-- has_one    :address
 
 
 ## buys テーブル
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| card_number  | integer    | null: false                    |
-| validity     | date       | null: false                    |
-| cvc          | integer    | null: false                    |
 | user         | references | null: false, foreign_key: true |
 | item         | references | null: false, foreign_key: true |
 
@@ -60,18 +57,14 @@
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| postal_code  | integer    | null: false                    |
-| prefecture   | string     | null: false                    |
+| postal_code  | string    | null: false                    |
+| prefecture_id   | string     | null: false                    |
 | city         | string     | null: false                    |
-| house_number | integer    | null: false                    |
+| house_number | string    | null: false                    |
 | building     | string     |                                |
-| phone_number | integer    | null: false                    |
-| user         | references | null: false, foreign_key: true |
-| item         | references | null: false, foreign_key: true |
+| phone_number | string    | null: false                    |
 | buy          | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
 - belongs_to :buy
