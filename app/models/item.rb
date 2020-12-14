@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :genre
+  belongs_to :category
 
   with_options presence: true do
     validates :image
@@ -18,5 +18,5 @@ class Item < ApplicationRecord
     validates :price
   end
 
-  validates :genre_id, numericality: { other_than: 1 }
+  validates :category_id, numericality: { other_than: 1 }
 end

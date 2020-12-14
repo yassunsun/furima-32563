@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_12_14_065631) do
     t.text "explanation", null: false
     t.integer "price", null: false
     t.bigint "user_id"
+    t.integer "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_items_on_user_id"
