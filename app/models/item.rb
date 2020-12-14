@@ -3,6 +3,9 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :genre
+
   with_options presence: true do
     validates :image
     validates :title
