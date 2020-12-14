@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   with_options presence: true do
+    validates :image
     validates :title
     validates :explanation
     validates :category_id
@@ -12,6 +13,5 @@ class Item < ApplicationRecord
     validates :prefecture_id
     validates :day_id
     validates :price
-    validates :image
   end
 end
