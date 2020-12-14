@@ -17,4 +17,6 @@ class Item < ApplicationRecord
     validates :day_id
     validates :price
   end
+
+  validates :genre_id, numericality: { other_than: 1 }
 end
