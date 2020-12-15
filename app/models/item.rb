@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category
+  belongs_to :category, :condition, :fee, :prefecture, :day
 
   with_options presence: true do
     validates :image
