@@ -14,11 +14,11 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it '商品名が存在すれば出品できる' do
-        @item.title = "テスト"
+        @item.title = 'テスト'
         expect(@item).to be_valid
       end
       it '商品の説明が存在すれば出品できる' do
-        @item.explanation = "テストです"
+        @item.explanation = 'テストです'
         expect(@item).to be_valid
       end
       it 'カテゴリーが存在すれば出品できる' do
@@ -29,14 +29,14 @@ RSpec.describe Item, type: :model do
         @item.condition_id = 2
         expect(@item).to be_valid
       end
-        it '配送料の負担が存在すれば出品できる' do
+      it '配送料の負担が存在すれば出品できる' do
         @item.fee_id = 2
         expect(@item).to be_valid
       end
-        it '発送元の地域が存在すれば出品できる' do
-          @item.prefecture_id = 2
-          expect(@item).to be_valid
-        end
+      it '発送元の地域が存在すれば出品できる' do
+        @item.prefecture_id = 2
+        expect(@item).to be_valid
+      end
       it '発送までの日数が存在すれば出品できる' do
         @item.day_id = 2
         expect(@item).to be_valid
@@ -66,27 +66,27 @@ RSpec.describe Item, type: :model do
       it 'category_idが1の場合出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Select")
+        expect(@item.errors.full_messages).to include('Category Select')
       end
       it 'condition_idが1の場合出品できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition Select")
+        expect(@item.errors.full_messages).to include('Condition Select')
       end
       it 'fee_idが1の場合出品できない' do
         @item.fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Fee Select")
+        expect(@item.errors.full_messages).to include('Fee Select')
       end
       it 'prefecture_idが1の場合出品できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture Select")
+        expect(@item.errors.full_messages).to include('Prefecture Select')
       end
       it 'day_idが1の場合出品できない' do
         @item.day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Day Select")
+        expect(@item.errors.full_messages).to include('Day Select')
       end
       it 'priceが空だと出品できない' do
         @item.price = nil
@@ -96,27 +96,27 @@ RSpec.describe Item, type: :model do
       it 'priceが半角数字以外だと出品できない' do
         @item.price = '２０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number")
+        expect(@item.errors.full_messages).to include('Price Half-width number')
       end
       it 'priceが半角英数字の混合だと出品できない' do
         @item.price = '500aaa'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number")
+        expect(@item.errors.full_messages).to include('Price Half-width number')
       end
       it 'priceが半角英語だと出品できない' do
         @item.price = 'aaaa'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number")
+        expect(@item.errors.full_messages).to include('Price Half-width number')
       end
       it 'priceが¥299以下だと出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
       it 'priceが¥10,000,000以上だと出品できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
     end
   end
