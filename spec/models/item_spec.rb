@@ -22,27 +22,27 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it 'カテゴリーが存在すれば出品できる' do
-        @item.category_id = "2"
+        @item.category_id = 2
         expect(@item).to be_valid
       end
       it '商品の状態が存在すれば出品できる' do
-        @item.condition_id = "2"
+        @item.condition_id = 2
         expect(@item).to be_valid
       end
         it '配送料の負担が存在すれば出品できる' do
-        @item.fee_id = "2"
+        @item.fee_id = 2
         expect(@item).to be_valid
       end
         it '発送元の地域が存在すれば出品できる' do
-          @item.prefecture_id = "2"
+          @item.prefecture_id = 2
           expect(@item).to be_valid
         end
       it '発送までの日数が存在すれば出品できる' do
-        @item.day_id = "2"
+        @item.day_id = 2
         expect(@item).to be_valid
       end
       it '販売価格が存在すれば出品できる' do
-        @item.price = "2000"
+        @item.price = 2000
         expect(@item).to be_valid
       end
     end
