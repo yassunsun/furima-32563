@@ -63,28 +63,28 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Explanation can't be blank")
       end
-      it 'category_idが空だと出品できない' do
-        @item.category_id = nil
+      it 'category_idが1の場合出品できない' do
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category Select")
       end
-      it 'condition_idが空だと出品できない' do
-        @item.condition_id = nil
+      it 'condition_idが1の場合出品できない' do
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition Select")
       end
-      it 'fee_idが空だと出品できない' do
-        @item.fee_id = nil
+      it 'fee_idが1の場合出品できない' do
+        @item.fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Fee Select")
       end
-      it 'prefecture_idが空だと出品できない' do
-        @item.prefecture_id = nil
+      it 'prefecture_idが1の場合出品できない' do
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture Select")
       end
-      it 'day_idが空だと出品できない' do
-        @item.day_id = nil
+      it 'day_idが1の場合出品できない' do
+        @item.day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Day Select")
       end
