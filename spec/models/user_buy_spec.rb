@@ -8,11 +8,11 @@ RSpec.describe UserBuy, type: :model do
 
     context '商品購入がうまくいくとき' do
       it 'すべての値が正しく入力されていれば保存できること' do
-        # expect(@user_buy).to be_valid
+        expect(@user_buy).to be_valid
       end
       it 'buildeingは空でも保存できること' do
-        # @user_buy = nil
-        # expect(@user_buy).to be_valid
+        @user_buy.building = nil
+        expect(@user_buy).to be_valid
       end
     end
 
@@ -24,6 +24,16 @@ RSpec.describe UserBuy, type: :model do
       end
       it 'postal_codeにハイフンがないと保存できないこと' do
         @user_buy.postal_code = "1234567"
+        @user_buy.valid?
+        expect(@user_buy.errors.full_messages). to include("Postal code Input correctly")
+      end
+      it 'postal_codeが三桁の数字ハイフン四桁の数字以外だと保存できないこと' do
+        @user_buy.postal_code = "123-456"
+        @user_buy.valid?
+        expect(@user_buy.errors.full_messages). to include("Postal code Input correctly")
+      end
+      it 'postal_codeが全角数字だと保存できないこと' do
+        @user_buy.postal_code = "１２３-４５６７"
         @user_buy.valid?
         expect(@user_buy.errors.full_messages). to include("Postal code Input correctly")
       end
