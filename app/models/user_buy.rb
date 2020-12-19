@@ -5,7 +5,7 @@ class UserBuy
 
   # ここにバリデーションの処理を書く
   with_options presence: true do
-    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "Input correctly"}
     validates :prefecture_id, numericality: { other_than: 1, message: "Select" }
     validates :city
     validates :house_number
