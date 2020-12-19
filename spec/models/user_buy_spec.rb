@@ -10,7 +10,7 @@ RSpec.describe UserBuy, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@user_buy).to be_valid
       end
-      it 'buildeingは空でも保存できること' do
+      it 'buildingは空でも保存できること' do
         @user_buy.building = nil
         expect(@user_buy).to be_valid
       end
