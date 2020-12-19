@@ -1,10 +1,18 @@
 class BuysController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
+    @buy= Buy.new
   end
 
   def create
     @item = Item.find(params[:item_id])
+    @buy = UserItem.new(buy_params)
+    if @buy.valid?
+      @buy.save
+      redirect_to root_path
+    else
+      render action: :index
+    end
   end
 
   private
