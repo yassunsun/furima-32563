@@ -1,4 +1,7 @@
 class BuysController < ApplicationController
   def index
+    @buy = Buy.find(params[:id])
   end
-end
+
+  def create
+  end
