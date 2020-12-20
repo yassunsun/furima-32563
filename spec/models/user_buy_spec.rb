@@ -72,6 +72,16 @@ RSpec.describe UserBuy, type: :model do
         @user_buy.valid?
         expect(@user_buy.errors.full_messages). to include("Phone number Input only number")
       end
+      it 'phone_numberにハイフンがあると保存できないこと' do
+        @user_buy.phone_number = "000-000-000"
+        @user_buy.valid?
+        expect(@user_buy.errors.full_messages). to include("Phone number Input only number")
+      end
+      it 'phone_numberが12桁以上だと保存できないこと' do
+        @user_buy.phone_number = "000123456789"
+        @user_buy.valid?
+        expect(@user_buy.errors.full_messages). to include("Phone number Input only number")
+      end
     end
   end
 end
