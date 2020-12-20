@@ -5,7 +5,7 @@ class BuysController < ApplicationController
   before_action :move_index, only: [:index, :create]
 
   def index
-    @user_buy= UserBuy.new
+    @user_buy = UserBuy.new
   end
 
   def create
@@ -13,35 +13,30 @@ class BuysController < ApplicationController
     if @user_buy.valid?
       pay_item
       @user_buy.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render :index
     end
   end
 
   private
+
   def set_item
     @item = Item.find(params[:item_id])
   end
 
   def buy_params
-    params.require(:user_buy).permit(:postal_code, :prefecture_id, :city, :house_number, :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    params.require(:user_buy).permit(:postal_code, :prefecture_id, :city, :house_number, :building, :phone_number).merge(
+      user_id: current_user.id, item_id: params[:item_id], token: params[:token]
+    )
   end
 
   def move_to_index
-    @item = Item.find(params[:item_id])
-    if @item.user.id == current_user.id
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.user.id == current_user.id
   end
-  
+
   def move_index
-    @item = Item.find(params[:item_id])
-    if user_signed_in?
-      if @item.buy.present?
-        redirect_to root_path
-      end
-    end
+    redirect_to root_path if user_signed_in? && @item.buy.present?
   end
 
   def pay_item
@@ -52,5 +47,4 @@ class BuysController < ApplicationController
       currency: 'jpy'
     )
   end
-
 end
