@@ -29,13 +29,13 @@ class BuysController < ApplicationController
 
   def move_to_index
     @item = Item.find(params[:item_id])
-    if @item.user.id = current_user.id
+    if @item.user.id == current_user.id
       redirect_to root_path
     end
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item[:price],
       card: buy_params[:token],
