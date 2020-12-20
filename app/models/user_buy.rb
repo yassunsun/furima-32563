@@ -1,7 +1,7 @@
 class UserBuy
 
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :city, :house_number, :building, :phone_number, :user_id, :item_id
+  attr_accessor :postal_code, :prefecture_id, :city, :house_number, :building, :phone_number, :user_id, :item_id, :token
 
   # ここにバリデーションの処理を書く
   with_options presence: true do
