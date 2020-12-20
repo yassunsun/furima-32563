@@ -17,6 +17,11 @@ RSpec.describe UserBuy, type: :model do
     end
 
     context '商品購入がうまくいかないとき' do
+      it "tokenが空では登録できないこと" do
+        @user_buy.token = nil
+        @user_buy.valid?
+        expect(@user_buy.errors.full_messages).to include("Token can't be blank")
+      end
       it 'postal_codeが空だと保存できないこと' do
         @user_buy.postal_code = nil
         @user_buy.valid?
